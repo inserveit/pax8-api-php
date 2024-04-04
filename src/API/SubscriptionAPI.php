@@ -31,17 +31,17 @@ class SubscriptionAPI extends AbstractAPIClient
     }
 
     /**
-     * @param int $limit
-     * @param int $offset
+     * @param int $size
+     * @param int $page
      *
      * @return PaginatedSubscriptionResponse|null
      *
      * @throws ExceptionInterface
      * @throws Pax8APIException
      */
-    public function list(int $limit = 25, int $offset = 0): ?PaginatedSubscriptionResponse
+    public function list(int $size = 25, int $page = 0): ?PaginatedSubscriptionResponse
     {
-        $url = sprintf('subscriptions?%s', http_build_query(['page' => $offset, 'size' => $limit]));
+        $url = sprintf('subscriptions?%s', http_build_query(['page' => $page, 'size' => $size]));
         $response = $this->apiClient->call(
             'GET',
             $url

@@ -31,17 +31,17 @@ class ProductAPI extends AbstractAPIClient
     }
 
     /**
-     * @param int $limit
-     * @param int $offset
+     * @param int $size
+     * @param int $page
      *
      * @return PaginatedProductResponse|null
      *
      * @throws ExceptionInterface
      * @throws Pax8APIException
      */
-    public function list(int $limit = 25, int $offset = 0): ?PaginatedProductResponse
+    public function list(int $size = 25, int $page = 0): ?PaginatedProductResponse
     {
-        $url = sprintf('products?%s', http_build_query(['page' => $offset, 'size' => $limit]));
+        $url = sprintf('products?%s', http_build_query(['page' => $page, 'size' => $size]));
         $response = $this->apiClient->call(
             'GET',
             $url
