@@ -11,6 +11,7 @@ use GuzzleHttp\Psr7\Request;
 use Inserve\Pax8API\Exception\Pax8APIException;
 use Inserve\Pax8API\Models\AccessToken;
 use Inserve\Pax8API\Models\ErrorResponse;
+use Psr\Log\LoggerAwareTrait;
 use Psr\Log\LoggerInterface;
 use SensitiveParameter;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
@@ -32,15 +33,16 @@ use Symfony\Component\Serializer\Serializer;
  */
 class APIClient
 {
+    use LoggerAwareTrait;
+
     protected ?AccessToken $accessToken = null;
     protected Serializer $serializer;
     protected ObjectNormalizer $normalizer;
 
     /**
-     * @param ClientInterface      $client
-     * @param LoggerInterface|null $logger
+     * @param ClientInterface $client
      */
-    public function __construct(protected ClientInterface $client, protected ?LoggerInterface $logger = null)
+    public function __construct(protected ClientInterface $client)
     {
         $classMetadataFactory = new ClassMetadataFactory(new AttributeLoader());
         $nameConverter =  new MetadataAwareNameConverter(
@@ -67,14 +69,6 @@ class APIClient
         );
 
         $this->accessToken = new AccessToken();
-    }
-
-    /**
-     * @return ClientInterface
-     */
-    public function getClient(): ClientInterface
-    {
-        return $this->client;
     }
 
     /**

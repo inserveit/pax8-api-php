@@ -8,6 +8,7 @@ use Inserve\Pax8API\API\ProductAPI;
 use Inserve\Pax8API\API\SubscriptionAPI;
 use Inserve\Pax8API\Client\APIClient;
 use Inserve\Pax8API\Models\AccessToken;
+use Psr\Log\LoggerInterface;
 use SensitiveParameter;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 
@@ -21,14 +22,19 @@ class Pax8APIClient
     protected APIClient $apiClient;
 
     /**
-     * @param APIClient|null $apiClient
+     * @param APIClient|null       $apiClient
+     * @param LoggerInterface|null $logger
      */
-    public function __construct(?APIClient $apiClient = null)
+    public function __construct(?APIClient $apiClient = null, ?LoggerInterface $logger = null)
     {
         if (! $apiClient) {
             $apiClient = new APIClient(
                 new Client(['base_uri' => 'https://api.pax8.com'])
             );
+        }
+
+        if ($logger) {
+            $apiClient->setLogger($logger);
         }
 
         $this->apiClient = $apiClient;
