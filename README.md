@@ -1,12 +1,12 @@
 ## Requirements
-[![PHP Version Require](http://poser.pugx.org/inserve/pax8-api-php/require/php)](https://packagist.org/packages/inserve/pax8-api-php)
+[![PHP Version Require](https://poser.pugx.org/inserve/pax8-api-php/require/php)](https://packagist.org/packages/inserve/pax8-api-php)
 
 ## Status
 
 ![workflow](https://github.com/inserveit/pax8-api-php/actions/workflows/build-actions.yml/badge.svg)
-[![Latest Stable Version](http://poser.pugx.org/inserve/pax8-api-php/v)](https://packagist.org/packages/inserve/pax8-api-php)
-[![Latest Unstable Version](http://poser.pugx.org/inserve/pax8-api-php/v/unstable)](https://packagist.org/packages/inserve/pax8-api-php)
-[![License](http://poser.pugx.org/inserve/pax8-api-php/license)](https://packagist.org/packages/inserve/pax8-api-php)
+[![Latest Stable Version](https://poser.pugx.org/inserve/pax8-api-php/v)](https://packagist.org/packages/inserve/pax8-api-php)
+[![Latest Unstable Version](https://poser.pugx.org/inserve/pax8-api-php/v/unstable)](https://packagist.org/packages/inserve/pax8-api-php)
+[![License](https://poser.pugx.org/inserve/pax8-api-php/license)](https://packagist.org/packages/inserve/pax8-api-php)
 
 # About
 A PHP Wrapper for [Pax8](https://devx.pax8.com/)
