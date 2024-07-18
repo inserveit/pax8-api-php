@@ -12,7 +12,6 @@ use Inserve\Pax8API\Exception\Pax8APIException;
 use Inserve\Pax8API\Models\AccessToken;
 use Inserve\Pax8API\Models\ErrorResponse;
 use Psr\Log\LoggerAwareTrait;
-use Psr\Log\LoggerInterface;
 use SensitiveParameter;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
 use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
@@ -38,6 +37,7 @@ class APIClient
     protected ?AccessToken $accessToken = null;
     protected Serializer $serializer;
     protected ObjectNormalizer $normalizer;
+    protected string $lastResponse = '';
 
     /**
      * @param ClientInterface $client
@@ -102,7 +102,7 @@ class APIClient
         try {
             return $this->normalizer->denormalize($response, $class);
         } catch (Exception $exception) {
-            $this->logError(sprintf('(%s): %s', __FUNCTION__, $exception->getMessage()));
+            $this->logError(sprintf('(%s): %s (%s)', __FUNCTION__, $exception->getMessage(), $this->lastResponse));
 
             return null;
         }
@@ -128,8 +128,9 @@ class APIClient
                 $body
             );
             $response = $this->client->send($request);
+            $this->lastResponse = (string) $response->getBody();
 
-            return json_decode((string) $response->getBody(), true);
+            return json_decode($this->lastResponse, true);
         } catch (GuzzleException|BadResponseException $exception) {
             $errorResponse = null;
             $errorMessage = $exception->getMessage();
