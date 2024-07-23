@@ -136,11 +136,16 @@ class APIClient
             $errorMessage = $exception->getMessage();
 
             if ($exception instanceof RequestException) {
-                $errorResponse = $this->serializer->deserialize(
-                    (string) $exception->getResponse()?->getBody(),
-                    ErrorResponse::class,
-                    'json'
-                );
+                $errorBody = (string) $exception->getResponse()?->getBody();
+                try {
+                    $errorResponse = $this->serializer->deserialize(
+                        $errorBody,
+                        ErrorResponse::class,
+                        'json'
+                    );
+                } catch (Exception) {
+                    $this->logError(sprintf('Failed to deserialize errorResponse: %s', $errorBody));
+                }
 
                 if ($errorResponse instanceof ErrorResponse) {
                     $errorMessage = (string) $errorResponse->getMessage();
