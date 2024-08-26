@@ -99,4 +99,14 @@ class Pax8APIClient
 
         return $accessToken;
     }
+
+    /**
+     * @param AccessToken $accessToken
+     *
+     * @return void
+     */
+    public function setAccessToken(#[SensitiveParameter] AccessToken $accessToken): void
+    {
+        $this->apiClient->setAccessToken($accessToken);
+    }
 }
