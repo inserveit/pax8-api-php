@@ -17,6 +17,7 @@ class Subscription
     protected ?string $status = null;
     protected ?float $price = null;
     protected ?string $billingTerm = null;
+    protected ?Commitment $commitment = null;
 
     /**
      * @return string|null
@@ -96,6 +97,14 @@ class Subscription
     public function getBillingTerm(): ?string
     {
         return $this->billingTerm;
+    }
+
+    /**
+     * @return Commitment|null
+     */
+    public function getCommitment(): ?Commitment
+    {
+        return $this->commitment;
     }
 
     /**
@@ -214,6 +223,18 @@ class Subscription
     public function setBillingTerm(?string $billingTerm): self
     {
         $this->billingTerm = $billingTerm;
+
+        return $this;
+    }
+
+    /**
+     * @param Commitment|null $commitment
+     *
+     * @return $this
+     */
+    public function setCommitment(?Commitment $commitment): self
+    {
+        $this->commitment = $commitment;
 
         return $this;
     }
