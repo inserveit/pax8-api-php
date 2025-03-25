@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class Commitment
+final class Commitment
 {
     protected ?string $id = null;
     protected ?string $term = null;

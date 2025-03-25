@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class Subscription
+final class Subscription
 {
     protected ?string $id = null;
     protected ?string $companyId = null;

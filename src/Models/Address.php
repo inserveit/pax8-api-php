@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class Address
+final class Address
 {
     protected ?string $street = null;
     protected ?string $city = null;

@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class AccessToken
+final class AccessToken
 {
     protected ?string $accessToken = null;
     protected ?string $scope = null;

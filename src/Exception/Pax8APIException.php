@@ -8,7 +8,7 @@ use Inserve\Pax8API\Models\ErrorResponse;
 /**
  *
  */
-class Pax8APIException extends Exception
+final class Pax8APIException extends Exception
 {
     /**
      * @param string             $message

@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class PaginatedSubscriptionResponse extends PaginatedResponse
+final class PaginatedSubscriptionResponse extends PaginatedResponse
 {
     /** @var Subscription[]|null */
     protected ?array $content = [];

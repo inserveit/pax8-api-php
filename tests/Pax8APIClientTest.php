@@ -16,7 +16,7 @@ use Symfony\Component\Serializer\Exception\ExceptionInterface;
 /**
  *
  */
-class Pax8APIClientTest extends TestCase
+final class Pax8APIClientTest extends TestCase
 {
     /**
      * @return void

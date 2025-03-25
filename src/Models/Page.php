@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class Page
+final class Page
 {
     protected ?int $size = null;
     protected ?int $totalElements = null;

@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class ErrorResponse
+final class ErrorResponse
 {
     protected ?string $type = null;
     protected ?string $message = null;

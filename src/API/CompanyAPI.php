@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Exception\ExceptionInterface;
 /**
  *
  */
-class CompanyAPI extends AbstractAPIClient
+final class CompanyAPI extends AbstractAPIClient
 {
     /**
      * @param string $companyId

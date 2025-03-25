@@ -5,7 +5,7 @@ namespace Inserve\Pax8API\Models;
 /**
  *
  */
-class Details
+final class Details
 {
     protected ?string $type = null;
     protected ?string $message = null;
